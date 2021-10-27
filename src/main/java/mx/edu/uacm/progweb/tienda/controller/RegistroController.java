@@ -32,9 +32,10 @@ public class RegistroController extends HttpServlet {
 		
 		boolean esExitoso = productoService.registrarProducto(clave, nombre, precio, cant);
 		if(esExitoso) {
-			request.getRequestDispatcher("/registroGuardado.jsp").forward(request, response);
+			
+			request.getRequestDispatcher("/WEB-INF/views/registroGuardado.jsp").forward(request, response);
 		} else {
-			request.getRequestDispatcher("/errorEnRegistro.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/errorEnRegistro.jsp").forward(request, response);
 		}
 		
 		
