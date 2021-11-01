@@ -7,7 +7,8 @@
 <body>
 	<div id="contenedor">
 
-		<form name="formulario1" id="formulario1" method="post" action="/registrar">
+		<form name="formulario1" id="formulario1" method="post"
+			action="/registrar">
 			<h1>Hola! Proporciona los datos del producto</h1>
 
 			<table>
@@ -32,6 +33,9 @@
 			</table>
 			<input type="submit" value="Registrar">
 
+		</form>
+		<form name="formulario2" id="formulario2" action="/consultarTodos" method="get">
+			<input type="submit" value="consultarTodos" />
 		</form>
 	</div>
 

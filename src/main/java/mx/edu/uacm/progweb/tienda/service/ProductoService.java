@@ -1,5 +1,7 @@
 package mx.edu.uacm.progweb.tienda.service;
 
+import java.util.List;
+
 import mx.edu.uacm.progweb.tienda.dao.ProductoDAO;
 import mx.edu.uacm.progweb.tienda.dominio.Producto;
 
@@ -22,6 +24,13 @@ public class ProductoService {
 	public Producto consultarProducto(int clave, String nombre) {
 		
 		return dao.consultar(clave, nombre);
+	}
+	
+	public List<Producto> consultarProductosTodos() {
+		
+		//TODO realizar logica del negocio
+		
+		return dao.consultarTodos();
 	}
 
 }

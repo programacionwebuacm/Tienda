@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import mx.edu.uacm.progweb.tienda.dominio.Producto;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -42,6 +45,18 @@ public class ProductoDAOTest {
 		
 		//asercion me permite verificar que efectivamente no se obtuvo el producto, es decir es nulo
 		assertNull(productoHallado);
+		
+	}
+	
+	@Test
+	public void debeObtenerProductosTodos() {
+		System.out.println("> Entrando a debeObtenerProductosTodos <");
+		ProductoDAO dao = new ProductoDAO();
+		List<Producto> listado = dao.consultarTodos();
+		assertNotNull(listado);
+		for (Producto producto : listado) {
+			System.out.println(producto.toString());
+		}
 		
 	}
 

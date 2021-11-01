@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import mx.edu.uacm.progweb.tienda.conf.db.ConexionDB;
 import mx.edu.uacm.progweb.tienda.dominio.Producto;
@@ -104,6 +106,53 @@ public class ProductoDAO {
 			return null;
 		}
 
+	}
+	
+	public List<Producto> consultarTodos() {
+		
+		List<Producto> listaProductos = new ArrayList<Producto>();
+		Producto producto = null;
+		
+		
+		try {
+			conn = ConexionDB.obtenerConexion();
+			stm  = conn.createStatement();
+			productoresSet = stm.executeQuery("select * from producto");
+			
+			if(!productoresSet.next()) {
+				System.out.println("No se encontró registros");
+				ConexionDB.cerrar();
+				return null;
+			} else {
+				
+				do {
+					
+					clav = productoresSet.getInt("clave");
+					nom = productoresSet.getString("nombre");
+					precio = productoresSet.getDouble("precio");
+					cant = productoresSet.getInt("cantidad");
+					
+					producto = new Producto(clav, nom, precio, cant);
+					
+					listaProductos.add(producto);
+					
+				} while (productoresSet.next());
+				
+				ConexionDB.cerrar();
+				
+				return listaProductos;
+				
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("Error en la base datos");
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+		
+		
 	}
 	
 }
